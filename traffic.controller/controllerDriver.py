@@ -4,7 +4,7 @@ By: Gustavo Chavez
 """
 
 
-### IMPORTS ###
+# IMPORTS ###
 from trafficMQTT import on_message, on_connect
 import signal
 import sys
@@ -12,7 +12,7 @@ import paho.mqtt.client as mqtt
 import time
 from multiprocessing import Process
 
-### GLOBALS ###
+# GLOBALS ###
 GPIO_set1 = [13, 19, 26]
 GPIO_set2 = [21, 20, 16]
 light0_topic = 'intersection/light0'
@@ -23,6 +23,7 @@ boolWarning = False
 boolDisabled = False
 boolDefault = False
 colors = ['DEFAULT', 'RED', 'AMBER', 'GREEN']
+
 
 class GracefulShutdown:
     shutdown = False
