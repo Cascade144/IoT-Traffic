@@ -18,8 +18,9 @@ def on_message(client, userdata, msg):
     print(msg.topic+' '+str(msg.payload))
     print(msg.payload.decode())
     color_str = str(msg.payload.decode())
-    if color_str == 'AMBER':
-        motor.stop()
+    if color_str == 'GREEN':
+        motor.setSpeed(50)
+        motor.start()
 
 
 

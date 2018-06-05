@@ -82,9 +82,7 @@ def main():
     print('Connected...')
     client.subscribe(light_topic)
     motor.setSpeed(50)
-    motor.motor0(forward1)
-    motor.motor1(forward1)
-    print('Moving forward...')
+    print('Waiting for green light...')
     rc = 0
     while rc == 0:
         if killer.shutdown:
