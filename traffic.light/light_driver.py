@@ -1,12 +1,12 @@
 """
-File: lightDriver.py
+File: light_driver.py
 By: Gustavo Chavez
 """
 
 # IMPORTS ###
 import RPi.GPIO as GPIO
 from TrafficLight import TrafficLight
-from lightMQTT import on_connect, on_message
+from light_mqtt import on_connect, on_message
 import signal
 import sys
 import paho.mqtt.client as mqtt
@@ -38,7 +38,7 @@ def main():
     # Check user invocation
     if len(sys.argv) != 2:
         print('Please enter traffic ID...')
-        print('Usage: lightDriver.py [ID]')
+        print('Usage: light_driver.py [ID]')
         sys.exit()
     light_id = int(sys.argv[1])
     client_name = 'light' + str(light_id)
@@ -57,7 +57,7 @@ def main():
     client.on_message = on_message
     client.user_data_set(signal_light)
     print('Connecting to host...')
-    client.connect('192.168.1.155', 1883)
+    client.connect('192.168.1.169', 1883)
     print('Connected...')
     client.subscribe(light_topic)
     rc = 0

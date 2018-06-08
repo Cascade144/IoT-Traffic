@@ -1,11 +1,11 @@
 """
-File: controllerDriver.py
+File: controller_driver.py
 By: Gustavo Chavez
 """
 
 
 # IMPORTS ###
-from trafficMQTT import on_message, on_connect
+from traffic_mqtt import on_message, on_connect
 import signal
 import sys
 import paho.mqtt.client as mqtt
@@ -40,7 +40,7 @@ def main():
     global boolWarning, boolDisabled, boolDefault
     if len(sys.argv) != 2:
         print('Please enter traffic mode...')
-        print('Usage: controllerDriver.py [warning|default|disabled]')
+        print('Usage: controller_driver.py [warning|default|disabled]')
         sys.exit()
     if sys.argv[1] == 'warning':
         boolWarning = True
@@ -59,7 +59,7 @@ def main():
     client.on_connect = on_connect
     client.on_message = on_message
     print('Connecting to host...')
-    client.connect('192.168.1.155', 1883)
+    client.connect('192.168.1.169', 1883)
     print('Connected...')
     rc = 0
     while rc == 0:
@@ -82,8 +82,9 @@ def main():
             for topic in topic_list:
                 client.publish(topic, 'DEFAULT')
         elif boolDefault:
+            print('Default operation.')
             for topic in topic_list:
-                client.publish(topic, 'GREEN')
+                client.publish(topic, 'RED')
         rc = client.loop()
     print('Shutting down...')
     sys.exit()

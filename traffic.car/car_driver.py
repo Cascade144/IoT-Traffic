@@ -1,5 +1,5 @@
 """
-File: carDriver.py
+File: car_driver.py
 """
 
 # IMPORTS ###
@@ -8,7 +8,7 @@ import motor
 import car_dir
 import signal
 import paho.mqtt.client as mqtt
-from carMQTT import on_subscribe, on_message, on_connect
+from car_mqtt import on_subscribe, on_message, on_connect
 import sys
 
 # GLOBALS ###
@@ -78,7 +78,7 @@ def main():
     client.on_connect = on_connect
     client.on_message = on_message
     print('Connecting to host...')
-    client.connect('192.168.1.155', 1883)
+    client.connect('192.168.1.169', 1883)
     print('Connected...')
     client.subscribe(light_topic)
     motor.setSpeed(50)
